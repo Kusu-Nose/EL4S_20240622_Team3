@@ -54,8 +54,13 @@ namespace Kusunose
             int loopCount = (int)(_backwardCount + _forwardCount) + 1;
             for(int i = 0; i < loopCount; i++)
             {
+                int index = 0;
+                if(_fieldUnitObjects.Count > 1)
+                {
+                    index = i % _fieldUnitObjects.Count;
+                }
                 // ínñ Çê∂ê¨ÇµÇƒÉvÅ[ÉãÇ…í«â¡
-                GameObject gameObject = Instantiate(_fieldUnitObjects[i % _fieldUnitObjects.Count]);
+                GameObject gameObject = Instantiate(_fieldUnitObjects[index], this.gameObject.transform);
                 _fieldUnitPool.Add(gameObject.GetComponent<FieldUnit>());
             }
 
