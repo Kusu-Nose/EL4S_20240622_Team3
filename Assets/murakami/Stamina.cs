@@ -59,6 +59,11 @@ public class Stamina : MonoBehaviour
         value -= _decValue * Time.deltaTime;
         value = Mathf.Max(0f, value);
 
+        if(value == 0)
+        {
+            FindObjectOfType<SceneController>().LoadScene("Result");
+            Destroy(this.gameObject);
+        }
 
         // 以下テスト用==================================
         Debug.Log(value);
