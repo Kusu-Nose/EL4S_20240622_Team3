@@ -36,6 +36,8 @@ public class SR_ItemBox : MonoBehaviour
         {
             ItemGetProcess();
 
+            EffectSpawner.instance.CreateEffect();
+
             GameObject.Destroy(other.gameObject);
         }
     }
