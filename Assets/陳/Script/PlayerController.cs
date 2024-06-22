@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
 
     [SerializeField]
-    float speedÅ@=1.0f;
+   public float speedÅ@=1.0f;
 
     [SerializeField]
     GameObject vcm;
@@ -88,21 +88,21 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Ground")
-        {
-            Debug.Log("isGround");
-        }
-    }
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.tag == "Ground")
+    //    {
+    //        Debug.Log("isGround");
+    //    }
+    //}
 
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.tag == "Ground")
-        {
-            Debug.Log("mid air");
-        }
+    //private void OnCollisionExit(Collision collision)
+    //{
+    //    if (collision.gameObject.tag == "Ground")
+    //    {
+    //        Debug.Log("mid air");
+    //    }
 
-    }
+    //}
 
 }

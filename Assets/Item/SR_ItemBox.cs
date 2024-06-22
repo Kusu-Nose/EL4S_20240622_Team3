@@ -14,11 +14,13 @@ public class SR_ItemBox : MonoBehaviour
 
     private BoxCollider _boxCol;
 
+    PlayerController _playerController;
+
     void Start()
     {
         TryGetComponent<BoxCollider>(out _boxCol);
         _boxCol.isTrigger = true;
-
+        _playerController = GetComponent<PlayerController>();
         _itemCount = 0;
 
     }
@@ -43,6 +45,7 @@ public class SR_ItemBox : MonoBehaviour
         if (_itemCountForSpeedUp >= _speedUpThreshold)
         {
             //速度アップ呼び出し
+            _playerController.speed += 0.3f;
 
             Stamina.instance.ChangeDecValue();
 
