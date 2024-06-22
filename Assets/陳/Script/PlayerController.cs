@@ -77,10 +77,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.C))
         {
-            
-            vcm.SetActive(true);
-            Invoke("Win", 0.9f);
-            
+            StartCoroutine(Win());
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -89,8 +86,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void Win()
+    IEnumerator Win()
     {
+        vcm.SetActive(true);
+        yield return 0.9f;
         animator.SetBool("Win", true);
     }
 
