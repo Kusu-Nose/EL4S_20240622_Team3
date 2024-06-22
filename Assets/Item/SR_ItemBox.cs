@@ -43,6 +43,9 @@ public class SR_ItemBox : MonoBehaviour
         if (_itemCountForSpeedUp >= _speedUpThreshold)
         {
             //速度アップ呼び出し
+
+            Stamina.instance.ChangeDecValue();
+
             _itemCountForSpeedUp = 0;
         }
     }
@@ -53,6 +56,6 @@ public class SR_ItemBox : MonoBehaviour
         _itemCount++;
         _itemCountForSpeedUp++;
 
-        //スタミナ減少値Up呼び出し
+        Stamina.instance.AddStamina();
     }
 }

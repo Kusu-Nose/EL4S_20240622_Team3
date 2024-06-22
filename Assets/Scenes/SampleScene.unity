@@ -302,6 +302,7 @@ GameObject:
   - component: {fileID: 363851283}
   - component: {fileID: 363851282}
   - component: {fileID: 363851286}
+  - component: {fileID: 363851287}
   m_Layer: 0
   m_Name: ItemBox
   m_TagString: Untagged
@@ -410,6 +411,22 @@ MonoBehaviour:
   _speedUpThreshold: 3
   _itemCount: 0
   _itemCountForSpeedUp: 0
+--- !u!114 &363851287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363851281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bc9a7bc63a544c4ba45a26dac52c069, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value: 0
+  _recoverValue: 0
+  _originalDecValue: 0
+  _addMulDecValue: 0
 --- !u!1 &435448285
 GameObject:
   m_ObjectHideFlags: 0
