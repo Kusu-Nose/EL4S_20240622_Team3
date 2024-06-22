@@ -12,7 +12,10 @@ public class ScoreUpUI : MonoBehaviour
     public ScoreCore scoreCore;
     public TMP_Text scoreText;
     public DamageNumber numberPrefab;
-    public Vector4 position;
+
+    public RectTransform uiCanvas; // UI CanvasのRectTransform
+    public Vector2 screenPosition; // 画面座標（ピクセル単位）
+
 
     private Coroutine scoreCoroutine;
     short stamina = 0;
@@ -26,8 +29,15 @@ public class ScoreUpUI : MonoBehaviour
 
     public void CreatScoreUP(short score)
     {
+        Camera camera = Camera.main;
+
         //スコアアップアニメーション
-        DamageNumber scoreNumber = numberPrefab.Spawn(position, score);
+        Vector2 spawnPosition;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(uiCanvas, screenPosition, null, out spawnPosition);
+        DamageNumber scoreNumber = Instantiate(numberPrefab, uiCanvas);
+        scoreNumber.transform.localPosition = new Vector3(spawnPosition.x, spawnPosition.y, camera.transform.position.z + 20);
+        scoreNumber.transform.localPosition += new Vector3(0, 0, 5);
+        scoreNumber.number = score;
 
         //スコア更新
         scoreCore.AddScore(score);
@@ -89,8 +99,11 @@ class CustomScoreUPUI : Editor
         // ダメージナンバープレハブのフィールドを表示
         scoreUpUI.numberPrefab = (DamageNumber)EditorGUILayout.ObjectField("Damage Number Prefab", scoreUpUI.numberPrefab, typeof(DamageNumber), true);
 
-        // Vector4フィールドを表示
-        scoreUpUI.position = EditorGUILayout.Vector4Field("Position", scoreUpUI.position);
+        // UI CanvasのRectTransformフィールドを表示
+        scoreUpUI.uiCanvas = (RectTransform)EditorGUILayout.ObjectField("UI Canvas", scoreUpUI.uiCanvas, typeof(RectTransform), true);
+
+        // 画面座標フィールドを表示
+        scoreUpUI.screenPosition = EditorGUILayout.Vector2Field("Screen Position", scoreUpUI.screenPosition);
 
         // TMPを取得
         scoreUpUI.scoreText = (TMP_Text)EditorGUILayout.ObjectField("TMPro", scoreUpUI.scoreText, typeof(TMP_Text), true);

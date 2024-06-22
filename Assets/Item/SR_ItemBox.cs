@@ -15,6 +15,7 @@ public class SR_ItemBox : MonoBehaviour
     private BoxCollider _boxCol;
 
     PlayerController _playerController;
+    public ScoreUpUI upUI;
 
     void Start()
     {
@@ -60,6 +61,7 @@ public class SR_ItemBox : MonoBehaviour
         /*ƒAƒCƒeƒ€æ“¾”‚ğ‘‚â‚·*/
         _itemCount++;
         _itemCountForSpeedUp++;
+        upUI.CreatScoreUP(1);
 
         Stamina.instance.AddStamina();
     }
