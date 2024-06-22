@@ -27,13 +27,13 @@ public class ScoreUpUI : MonoBehaviour
     public void CreatScoreUP(short score)
     {
         //スコアアップアニメーション
-        DamageNumber scoreNumber = numberPrefab.Spawn(position);
+        DamageNumber scoreNumber = numberPrefab.Spawn(position, score);
 
         //スコア更新
-        //scoreCore.AddScore(score);
+        scoreCore.AddScore(score);
 
         //文字更新
-        //scoreUpdate();
+        scoreUpdate();
     }
 
     public void scoreUpdate()
