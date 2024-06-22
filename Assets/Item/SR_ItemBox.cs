@@ -45,7 +45,7 @@ public class SR_ItemBox : MonoBehaviour
         if (_itemCountForSpeedUp >= _speedUpThreshold)
         {
             //速度アップ呼び出し
-            _playerController.speed += 0.3f;
+            _playerController.speed += 0.1f;
 
             Stamina.instance.ChangeDecValue();
 
