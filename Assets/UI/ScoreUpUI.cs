@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using TMPro;
 using System.Collections;
+using Unity.VisualScripting;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -12,10 +13,12 @@ public class ScoreUpUI : MonoBehaviour
     public ScoreCore scoreCore;
     public TMP_Text scoreText;
     public DamageNumber numberPrefab;
-    public Vector4 position;
+    public Vector4 pos;
 
     private Coroutine scoreCoroutine;
     short stamina = 0;
+
+
 
     private void Start()
     {
@@ -27,13 +30,15 @@ public class ScoreUpUI : MonoBehaviour
     public void CreatScoreUP(short score)
     {
         //スコアアップアニメーション
-        DamageNumber scoreNumber = numberPrefab.Spawn(position);
+        DamageNumber scoreNumber = numberPrefab.Spawn(pos, score);
+        
+        scoreNumber.number = score;
 
         //スコア更新
-        //scoreCore.AddScore(score);
+        scoreCore.AddScore(score);
 
         //文字更新
-        //scoreUpdate();
+        scoreUpdate();
     }
 
     public void scoreUpdate()
@@ -89,11 +94,12 @@ class CustomScoreUPUI : Editor
         // ダメージナンバープレハブのフィールドを表示
         scoreUpUI.numberPrefab = (DamageNumber)EditorGUILayout.ObjectField("Damage Number Prefab", scoreUpUI.numberPrefab, typeof(DamageNumber), true);
 
-        // Vector4フィールドを表示
-        scoreUpUI.position = EditorGUILayout.Vector4Field("Position", scoreUpUI.position);
-
+        // UI CanvasのRectTransformフィールドを表示
+        scoreUpUI.pos = EditorGUILayout.Vector4Field("Position", scoreUpUI.pos);
+        
         // TMPを取得
         scoreUpUI.scoreText = (TMP_Text)EditorGUILayout.ObjectField("TMPro", scoreUpUI.scoreText, typeof(TMP_Text), true);
+
 
         // インスペクターの変更を保存
         if (EditorGUI.EndChangeCheck())
