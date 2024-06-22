@@ -19,9 +19,7 @@ public class PlayerController : MonoBehaviour
     Transform playerTransform;
     Rigidbody rigidbody;
 
-
-    float jumpVelociy;
-    float jumpHash;
+    bool isGround=true;
 
     // Start is called before the first frame update
     void Start()
@@ -30,28 +28,31 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody>();
 
-        jumpHash = Animator.StringToHash("HorizantaVelocity");
+    
     }
 
     // Update is called once per frame
     void Update()
     {
-        animator.speed = speed;
+        if (speed<=3.0f)
+        {
+            animator.speed = speed;
+        }
+        //Debug.Log(rigidbody.velocity.y);
+        //animator.SetFloat("Velocity", rigidbody.velocity.y);
+
        // playerTransform.position += new Vector3(0.0f,0.0f, -speed * Time.deltaTime);
         PlayerInput();
 
-    }
 
-    void ItemCheck()
-    {
-    
+        //animator.SetBool("isGround", isGround);
+       
     }
-
 
 
     void PlayerInput()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.D))
         {
             if(playerTransform.position.x >= 5.0f)
             {
@@ -59,7 +60,7 @@ public class PlayerController : MonoBehaviour
             }
             playerTransform.position += new Vector3(5.0f, 0.0f,0.0f);
         } 
-        else if (Input.GetKeyDown(KeyCode.D))
+        else if (Input.GetKeyDown(KeyCode.A))
         {
             if (playerTransform.position.x <= -5.0f)
             {
@@ -76,10 +77,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.C))
         {
-            
-            vcm.SetActive(true);
-            animator.SetBool("Win",true);
-            
+            StartCoroutine(Win());
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -88,11 +86,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    IEnumerator Win()
+    {
+        vcm.SetActive(true);
+        yield return 0.9f;
+        animator.SetBool("Win", true);
+    }
+
     //private void OnCollisionEnter(Collision collision)
     //{
     //    if (collision.gameObject.tag == "Ground")
     //    {
-    //        Debug.Log("isGround");
+    //        isGround = true;
     //    }
     //}
 
@@ -100,7 +105,7 @@ public class PlayerController : MonoBehaviour
     //{
     //    if (collision.gameObject.tag == "Ground")
     //    {
-    //        Debug.Log("mid air");
+    //        isGround = false;
     //    }
 
     //}

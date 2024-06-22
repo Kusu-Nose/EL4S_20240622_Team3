@@ -44,6 +44,7 @@ namespace Kusunose
         /// </summary>
         private GameObject _fieldCollision;
 
+
         private void Awake()
         {
             _player = GameObject.FindWithTag("Player");
@@ -76,6 +77,9 @@ namespace Kusunose
         private void Update()
         {
             UpdateField(_player.transform.position.z);
+
+            
+
             //UpdateCollision(_player.transform.position.z);
         }
 
