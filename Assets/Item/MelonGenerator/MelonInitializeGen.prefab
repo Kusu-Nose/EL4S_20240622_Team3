@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 725844538662872238}
   - component: {fileID: 694059636906696562}
   m_Layer: 0
-  m_Name: MelonGenerator
+  m_Name: MelonInitializeGen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
