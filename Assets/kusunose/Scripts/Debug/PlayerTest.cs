@@ -8,7 +8,7 @@ namespace Kusunose
         {
             if(Input.GetKey(KeyCode.W))
             {
-                transform.position += Vector3.forward * 0.1f;
+                transform.position += Vector3.forward * 0.05f;
             }
         }
     }
