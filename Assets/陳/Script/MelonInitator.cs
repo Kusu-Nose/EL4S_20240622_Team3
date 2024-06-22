@@ -23,7 +23,7 @@ public class MelonInitator : MonoBehaviour
   
         if (_melonPrefab != null && _initCD <= 0)
         {
-            float offsetZ = Random.Range(20.0f, 50.0f);
+            float offsetZ = Random.Range(40.0f, 80.0f);
             int offsetX = Random.Range(-1, 2)  * 5;
             Vector3 melonInitePos = new Vector3(offsetX, 0.0f, _player.transform.position.z+offsetZ);
 
