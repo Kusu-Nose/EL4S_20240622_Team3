@@ -33,5 +33,10 @@ public class FootEffect : MonoBehaviour
     private void CreateEffect()
     {
         Instantiate(_effect, this.transform);
+
+
+        //GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        //Instantiate(_effect, player.transform.position, Quaternion.identity);
     }
 }
