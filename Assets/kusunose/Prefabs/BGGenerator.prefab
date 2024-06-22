@@ -45,9 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fieldUnitObjects:
-  - {fileID: 8655040678319116571, guid: 199219e35f40af84cace89935ff8cb14, type: 3}
-  - {fileID: 8655040678319116571, guid: f79b380bcc2eb6544b5f5a1b6f0c503f, type: 3}
-  _fieldOffset: {x: 0, y: 0, z: 0}
+  - {fileID: 5753137185931412869, guid: 3f707ae8c6136a548986dcf4b3845cc4, type: 3}
+  - {fileID: 3329169055984999190, guid: 60e9705920bf40348a2db43696d4721c, type: 3}
+  _offset: {x: 0, y: -0.5, z: 0}
   _forwardCount: 10
-  _backwardCount: 2
+  _backwardCount: 1
   _debugColor: {r: 0, g: 0, b: 1, a: 1}
